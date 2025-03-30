@@ -683,9 +683,9 @@
         "canonicalName": "bitcoin-classic",
         "symbol": "XBT",
         "family": "bitcoin",
-        "website": "https://xbt.satoshisolos.info/",
-        "market": "https://coinmarketcap.com/currencies/bitcoin-classic-xbt/",
-        "twitter": "https://twitter.com/bitcoinclassicxbt",
+        "website": "https://xbtclassic.com/",
+        "market": "https://mecacex.com/market/XBTUSDT",
+        "twitter": "https://x.com/xbtproject",
         "telegram": "",
         "discord": "",
         "coinbaseHasher": {
@@ -703,8 +703,37 @@
             ]
         },
         "coinbaseIgnoreAuxFlags": true,
-        "explorerBlockLink": "https://xbt-explorer.satoshisolos.info/block/$hash$",
-        "explorerTxLink": "https://xbt-explorer.satoshisolos.info/tx/{0}",
-        "explorerAccountLink": "https://xbt-explorer.satoshisolos.info/address/{0}"
-    }
+        "explorerBlockLink": "https://xbt-explorer.s3na.xyz/block/$hash$",
+        "explorerTxLink": "https://xbt-explorer.s3na.xyz/tx/{0}",
+        "explorerAccountLink": "https://xbt-explorer.s3na.xyz/address/{0}"
+    },
+    "bitcoin-atom": {
+    "name": "BitcoinAtom",
+    "canonicalName": "bitcoin-atom",
+    "symbol": "BCA",
+    "family": "bitcoin",
+    "website": "https://bitcoinatom.io/",
+    "market": "https://example.com/market/BCAUSDT",
+    "twitter": "https://x.com/BitcoinAtom",
+    "telegram": "https://t.me/bitcoinatom",
+    "discord": "",
+    "coinbaseHasher": {
+        "hash": "sha256d"
+    },
+    "headerHasher": {
+        "hash": "sha256d"
+    },
+    "blockHasher": {
+        "hash": "reverse",
+        "args": [
+            {
+                "hash": "sha256d"
+            }
+        ]
+    },
+    "coinbaseIgnoreAuxFlags": true,
+    "explorerBlockLink": "https://explorer.bitcoinatom.io/block/$hash$",
+    "explorerTxLink": "https://explorer.bitcoinatom.io/tx/{0}",
+    "explorerAccountLink": "https://explorer.bitcoinatom.io/address/{0}"
+}
 }
