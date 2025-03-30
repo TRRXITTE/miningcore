@@ -4589,6 +4589,37 @@
             "explorerTxLink": "https://explorer.fractalbitcoin.io/tx/{0}",
             "explorerAccountLink": "https://explorer.fractalbitcoin.io/address/{0}"
         }
+    },
+    {
+        "bitcoin-classic": {
+            "name": "Bitcoin Classic",
+            "canonicalName": "Bitcoin Classic",
+            "symbol": "XBT",
+            "family": "bitcoin",
+            "website": "https://xbt.satoshisolos.info/",
+            "market": "https://coinmarketcap.com/currencies/bitcoin-classic-xbt/", 
+            "twitter": "https://twitter.com/bitcoinclassicxbt", 
+            "telegram": "",
+            "discord": "",
+            "coinbaseHasher": {
+                "hash": "sha256d"
+            },
+            "headerHasher": {
+                "hash": "sha256d"
+            },
+            "blockHasher": {
+                "hash": "reverse",
+                "args": [
+                    {
+                        "hash": "sha256d"
+                    }
+                ]
+            },
+            "coinbaseIgnoreAuxFlags": true,
+            "explorerBlockLink": "https://xbt-explorer.satoshisolos.info/block/$hash$", 
+            "explorerTxLink": "https://xbt-explorer.satoshisolos.info/tx/{0}",
+            "explorerAccountLink": "https://xbt-explorer.satoshisolos.info/address/{0}"
+        }
     }
 
 }
