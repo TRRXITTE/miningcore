@@ -527,7 +527,7 @@ public abstract class BitcoinJobManagerBase<TJob> : JobManagerBase<TJob>
             throw new ArgumentNullException(nameof(address));
 
         // Check if this is a DigiByte pool
-        if(poolConfig.Coin.Type.ToLower().Contains("digibyte"))
+        if(poolConfig.Coin.Type.ToLower().Contains("Digibyte"))
         {
             return BitcoinUtils.DigiByteAddressToDestination(address, network);
         }
