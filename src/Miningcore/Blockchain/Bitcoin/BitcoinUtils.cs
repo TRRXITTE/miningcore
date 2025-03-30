@@ -27,13 +27,25 @@ public static class BitcoinUtils
     public static IDestination BCashAddressToDestination(string address, Network expectedNetwork)
     {
         // Map the expectedNetwork's ChainName to the BCash library's ChainName
-        ChainName chainName = expectedNetwork.ChainName.ToString().ToLower() switch
+        string chainNameStr = expectedNetwork.ChainName.ToString().ToLower();
+        ChainName chainName;
+        switch (chainNameStr)
         {
-            "mainnet" or "main" => ChainName.Mainnet,
-            "testnet4" or "test4" => ChainName.Testnet,
-            "regtest" or "reg" => ChainName.Regtest,
-            _ => throw new ArgumentException("Unknown network chain name", nameof(expectedNetwork))
-        };
+            case "mainnet":
+            case "main":
+                chainName = ChainName.Mainnet;
+                break;
+            case "testnet4":
+            case "test4":
+                chainName = ChainName.Testnet;
+                break;
+            case "regtest":
+            case "reg":
+                chainName = ChainName.Regtest;
+                break;
+            default:
+                throw new ArgumentException("Unknown network chain name", nameof(expectedNetwork));
+        }
 
         // Get the appropriate Bitcoin Cash network instance
         var bcashNetwork = NBitcoin.Altcoins.BCash.Instance.GetNetwork(chainName);
