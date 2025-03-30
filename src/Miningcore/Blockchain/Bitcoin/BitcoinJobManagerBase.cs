@@ -458,7 +458,10 @@ public abstract class BitcoinJobManagerBase<TJob> : JobManagerBase<TJob>
         var addressInfoResponse = responses[4].Error == null ? responses[4].Response.ToObject<AddressInfo>() : null;
 
         // chain detection
-        network = Network.GetNetwork(blockchainInfoResponse.Chain.ToLower());
+        if(!hasLegacyDaemon)
+            network = Network.GetNetwork(blockchainInfoResponse.Chain.ToLower());
+        else
+            network = daemonInfoResponse.Testnet ? Network.TestNet : Network.Main;
 
         PostChainIdentifyConfigure();
 
@@ -473,7 +476,7 @@ public abstract class BitcoinJobManagerBase<TJob> : JobManagerBase<TJob>
         if(!isPoS)
         {
             if(extraPoolConfig != null && extraPoolConfig.AddressType != BitcoinAddressType.Legacy)
-                logger.Info(()=> $"Interpreting pool address {poolConfig.Address} as type {extraPoolConfig?.AddressType.ToString()}");
+                logger.Info(() => $"Interpreting pool address {poolConfig.Address} as type {extraPoolConfig?.AddressType.ToString()}");
 
             poolAddressDestination = AddressToDestination(poolConfig.Address, extraPoolConfig?.AddressType);
         }
@@ -486,7 +489,7 @@ public abstract class BitcoinJobManagerBase<TJob> : JobManagerBase<TJob>
         {
             // ensure pool owns wallet
             if(validateAddressResponse is {IsMine: false} && addressInfoResponse is {IsMine: false})
-                logger.Warn(()=> $"Daemon does not own pool-address '{poolConfig.Address}'");
+                logger.Warn(() => $"Daemon does not own pool-address '{poolConfig.Address}'");
         }
 
         // update stats
@@ -509,7 +512,7 @@ public abstract class BitcoinJobManagerBase<TJob> : JobManagerBase<TJob>
         // Periodically update network stats
         Observable.Interval(TimeSpan.FromMinutes(10))
             .Select(_ => Observable.FromAsync(() =>
-                Guard(()=> !hasLegacyDaemon ? UpdateNetworkStatsAsync(ct) : UpdateNetworkStatsLegacyAsync(ct),
+                Guard(() => !hasLegacyDaemon ? UpdateNetworkStatsAsync(ct) : UpdateNetworkStatsLegacyAsync(ct),
                     ex => logger.Error(ex))))
             .Concat()
             .Subscribe();
@@ -518,27 +521,34 @@ public abstract class BitcoinJobManagerBase<TJob> : JobManagerBase<TJob>
         SetupJobUpdates(ct);
     }
 
-    protected virtual IDestination AddressToDestination(string address, BitcoinAddressType? addressType)
+ protected virtual IDestination AddressToDestination(string address, BitcoinAddressType? addressType)
+{
+    if(string.IsNullOrEmpty(address))
+        throw new ArgumentNullException(nameof(address));
+
+    // Check if this is a DigiByte pool
+    if(poolConfig.Coin.ToLower().Contains("digibyte"))
     {
-        if(!addressType.HasValue)
-            return BitcoinUtils.AddressToDestination(address, network);
-
-        switch(addressType.Value)
-        {
-            case BitcoinAddressType.BechSegwit:
-                return BitcoinUtils.BechSegwitAddressToDestination(poolConfig.Address, network);
-
-            case BitcoinAddressType.BCash:
-                return BitcoinUtils.BCashAddressToDestination(poolConfig.Address, network);
-
-            default:
-                return BitcoinUtils.AddressToDestination(poolConfig.Address, network);
-        }
+        return BitcoinUtils.DigiByteAddressToDestination(address, network);
     }
+
+    // Handle other address types based on configuration
+    if(!addressType.HasValue)
+        return BitcoinUtils.AddressToDestination(address, network);
+
+    switch(addressType.Value)
+    {
+        case BitcoinAddressType.BechSegwit:
+            return BitcoinUtils.BechSegwitAddressToDestination(address, network);
+        case BitcoinAddressType.BCash:
+            return BitcoinUtils.BCashAddressToDestination(address, network);
+        default:
+            return BitcoinUtils.AddressToDestination(address, network);
+    }
+}
 
     protected void SetupCrypto()
     {
-
     }
 
     protected abstract Task<(bool IsNew, bool Force)> UpdateJob(CancellationToken ct, bool forceUpdate, string via = null, string json = null);
