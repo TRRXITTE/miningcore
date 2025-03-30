@@ -38,6 +38,7 @@ public static class BitcoinUtils
     public static IDestination BCashAddressToDestination(string address, Network expectedNetwork)
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         // Map the expectedNetwork's ChainName to the BCash library's ChainName
         ChainName chainName = expectedNetwork.ChainName.ToString().ToLower() switch
         {
@@ -64,6 +65,8 @@ public static class BitcoinUtils
         var pubKeyAddress = bcashNetwork.Parse<NBitcoin.Altcoins.BCash.BTrashPubKeyAddress>(address);
         return pubKeyAddress.ScriptPubKey.GetDestinationAddress(bcashNetwork);
 =======
+=======
+>>>>>>> parent of b255b462 (bitcoincash: address)
 // Map the expectedNetwork's ChainName to the BCash library's ChainName
          ChainName chainName = expectedNetwork.ChainName.ToString().ToLower() switch
          {
@@ -89,6 +92,9 @@ public static class BitcoinUtils
  
          var pubKeyAddress = bcashNetwork.Parse<NBitcoin.Altcoins.BCash.BTrashPubKeyAddress>(address);
          return pubKeyAddress.ScriptPubKey.GetDestinationAddress(bcashNetwork);
+<<<<<<< HEAD
+>>>>>>> parent of b255b462 (bitcoincash: address)
+=======
 >>>>>>> parent of b255b462 (bitcoincash: address)
     }
 }
