@@ -2284,55 +2284,6 @@
         "explorerTxLink": "https://explorer.neoxa.net/tx/{0}",
         "explorerAccountLink": "https://explorer.neoxa.net/address/{0}"
     },
-    "nimiq": {
-        "name": "Nimiq",
-        "canonicalName": "Nimiq",
-        "symbol": "NIM",
-        "family": "nimiq",
-        "website": "https://www.nimiq.com/",
-        "market": "https://coinmarketcap.com/currencies/nimiq/",
-        "twitter": "https://twitter.com/nimiq",
-        "telegram": "https://t.me/nimiq",
-        "discord": "https://discord.gg/nimiq",
-        "explorerBlockLink": "https://nimiq.watch/block/$height$",
-        "explorerTxLink": "https://nimiq.watch/tx/{0}",
-        "explorerAccountLink": "https://nimiq.watch/address/{0}"
-    },
-    "orbitcoin": {
-        "name": "Orbitcoin",
-        "canonicalName": "Orbitcoin",
-        "symbol": "ORB",
-        "family": "bitcoin",
-        "website": "http://orbitcoin.org/",
-        "market": "",
-        "twitter": "",
-        "telegram": "",
-        "discord": "",
-        "coinbaseHasher": {
-            "hash": "sha256d"
-        },
-        "headerHasher": {
-            "hash": "neoscrypt",
-            "args": [
-                0
-            ]
-        },
-        "blockHasher": {
-            "hash": "reverse",
-            "args": [
-                {
-                    "hash": "neoscrypt",
-                    "args": [
-                        0
-                    ]
-                }
-            ]
-        },
-        "shareMultiplier": 65536,
-        "explorerBlockLink": "https://chainz.cryptoid.info/orb/block.dws?$height$.htm",
-        "explorerTxLink": "https://chainz.cryptoid.info/orb/tx.dws?{0}.htm",
-        "explorerAccountLink": "https://chainz.cryptoid.info/orb/address.dws?{0}.htm"
-    },
     "peercoin": {
         "name": "Peercoin",
         "canonicalName": "Peercoin",
