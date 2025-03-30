@@ -2590,6 +2590,281 @@
         "explorerTxLink": "https://chainz.cryptoid.info/spk/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/spk/address.dws?{0}.htm"
     },
+    {
+            "mvc": {
+                "name": "MicroVisionChain",
+                "canonicalName": "MicroVisionChain",
+                "symbol": "SPACE",
+                "family": "bitcoin",
+                "website": "https://mvc.global/",
+                "market": "https://coinmarketcap.com/currencies/microvisionchain/",
+                "twitter": "https://twitter.com/MVCofficial",
+                "telegram": "https://t.me/MVCglobal",
+                "discord": "",
+                "coinbaseHasher": {
+                    "hash": "sha256d"
+                },
+                "headerHasher": {
+                    "hash": "sha256d"
+                },
+                "blockHasher": {
+                    "hash": "reverse",
+                    "args": [
+                        {
+                            "hash": "sha256d"
+                        }
+                    ]
+                },
+                "explorerBlockLink": "https://scan.mvc.space/block/$height$",
+                "explorerTxLink": "https://scan.mvc.space/tx/{0}",
+                "explorerAccountLink": "https://scan.mvc.space/address/{0}"
+            },
+            "bellscoin": {
+                "name": "Bellscoin",
+                "canonicalName": "Bellscoin",
+                "symbol": "BEL",
+                "family": "bitcoin",
+                "website": "https://bellscoin.com/",
+                "market": "",
+                "twitter": "",
+                "telegram": "",
+                "discord": "",
+                "coinbaseHasher": {
+                    "hash": "sha256d"
+                },
+                "headerHasher": {
+                    "hash": "scrypt",
+                    "args": [
+                        1024,
+                        1
+                    ]
+                },
+                "blockHasher": {
+                    "hash": "reverse",
+                    "args": [
+                        {
+                            "hash": "sha256d"
+                        }
+                    ]
+                },
+                "posBlockHasher": {
+                    "hash": "reverse",
+                    "args": [
+                        {
+                            "hash": "scrypt",
+                            "args": [
+                                1024,
+                                1
+                            ]
+                        }
+                    ]
+                },
+                "shareMultiplier": 65536,
+                "explorerBlockLink": "https://explorer.bellscoin.com/block/$height$",
+                "explorerTxLink": "https://explorer.bellscoin.com/tx/{0}",
+                "explorerAccountLink": "https://explorer.bellscoin.com/address/{0}"
+            },
+            "broccolicoin": {
+                "name": "Broccolicoin",
+                "canonicalName": "Broccolicoin",
+                "symbol": "BROCCOLI",
+                "family": "bitcoin",
+                "website": "",
+                "market": "",
+                "twitter": "",
+                "telegram": "",
+                "discord": "",
+                "coinbaseHasher": {
+                    "hash": "sha256d"
+                },
+                "headerHasher": {
+                    "hash": "scrypt",
+                    "args": [
+                        1024,
+                        1
+                    ]
+                },
+                "blockHasher": {
+                    "hash": "reverse",
+                    "args": [
+                        {
+                            "hash": "sha256d"
+                        }
+                    ]
+                },
+                "posBlockHasher": {
+                    "hash": "reverse",
+                    "args": [
+                        {
+                            "hash": "scrypt",
+                            "args": [
+                                1024,
+                                1
+                            ]
+                        }
+                    ]
+                },
+                "shareMultiplier": 65536,
+                "explorerBlockLink": "",
+                "explorerTxLink": "",
+                "explorerAccountLink": ""
+            },
+            "luckycoin": {
+                "name": "Luckycoin",
+                "canonicalName": "Luckycoin",
+                "symbol": "LKY",
+                "family": "bitcoin",
+                "website": "",
+                "market": "",
+                "twitter": "",
+                "telegram": "",
+                "discord": "",
+                "coinbaseHasher": {
+                    "hash": "sha256d"
+                },
+                "headerHasher": {
+                    "hash": "scrypt",
+                    "args": [
+                        1024,
+                        1
+                    ]
+                },
+                "blockHasher": {
+                    "hash": "reverse",
+                    "args": [
+                        {
+                            "hash": "sha256d"
+                        }
+                    ]
+                },
+                "posBlockHasher": {
+                    "hash": "reverse",
+                    "args": [
+                        {
+                            "hash": "scrypt",
+                            "args": [
+                                1024,
+                                1
+                            ]
+                        }
+                    ]
+                },
+                "shareMultiplier": 65536,
+                "explorerBlockLink": "",
+                "explorerTxLink": "",
+                "explorerAccountLink": ""
+            },
+            "pepecoin": {
+                "name": "Pepecoin",
+                "canonicalName": "Pepecoin",
+                "symbol": "PEP",
+                "family": "bitcoin",
+                "website": "https://pepecoin.org/",
+                "market": "https://coinmarketcap.com/currencies/pepecoin/",
+                "twitter": "https://twitter.com/PepecoinCentral",
+                "telegram": "",
+                "discord": "",
+                "coinbaseHasher": {
+                    "hash": "sha256d"
+                },
+                "headerHasher": {
+                    "hash": "scrypt",
+                    "args": [
+                        1024,
+                        1
+                    ]
+                },
+                "blockHasher": {
+                    "hash": "reverse",
+                    "args": [
+                        {
+                            "hash": "sha256d"
+                        }
+                    ]
+                },
+                "posBlockHasher": {
+                    "hash": "reverse",
+                    "args": [
+                        {
+                            "hash": "scrypt",
+                            "args": [
+                                1024,
+                                1
+                            ]
+                        }
+                    ]
+                },
+                "shareMultiplier": 65536,
+                "explorerBlockLink": "https://explorer.pepecoin.org/block/$height$",
+                "explorerTxLink": "https://explorer.pepecoin.org/tx/{0}",
+                "explorerAccountLink": "https://explorer.pepecoin.org/address/{0}"
+            },
+            "fractalbitcoin": {
+                "name": "Fractal Bitcoin",
+                "canonicalName": "Fractal Bitcoin",
+                "symbol": "FB",
+                "family": "bitcoin",
+                "website": "https://fractalbitcoin.io/",
+                "market": "",
+                "twitter": "https://twitter.com/fractal_bitcoin",
+                "telegram": "https://t.me/FractalBitcoinOfficial",
+                "discord": "",
+                "coinbaseHasher": {
+                    "hash": "sha256d"
+                },
+                "headerHasher": {
+                    "hash": "sha256d"
+                },
+                "blockHasher": {
+                    "hash": "reverse",
+                    "args": [
+                        {
+                            "hash": "sha256d"
+                        }
+                    ]
+                },
+                "explorerBlockLink": "https://explorer.fractalbitcoin.io/block/$height$",
+                "explorerTxLink": "https://explorer.fractalbitcoin.io/tx/{0}",
+                "explorerAccountLink": "https://explorer.fractalbitcoin.io/address/{0}"
+            },
+            "peercoin": {
+                "name": "Peercoin",
+                "canonicalName": "Peercoin",
+                "symbol": "PPC",
+                "family": "bitcoin",
+                "website": "https://www.peercoin.net/",
+                "market": "https://coinmarketcap.com/currencies/peercoin/",
+                "twitter": "https://twitter.com/PeercoinPPC",
+                "telegram": "https://t.me/peercoin",
+                "discord": "",
+                "coinbaseHasher": {
+                    "hash": "sha256d"
+                },
+                "headerHasher": {
+                    "hash": "sha256"
+                },
+                "blockHasher": {
+                    "hash": "reverse",
+                    "args": [
+                        {
+                            "hash": "sha256"
+                        }
+                    ]
+                },
+                "posBlockHasher": {
+                    "hash": "reverse",
+                    "args": [
+                        {
+                            "hash": "sha256"
+                        }
+                    ]
+                },
+                "explorerBlockLink": "https://explorer.peercoin.net/block/$height$",
+                "explorerTxLink": "https://explorer.peercoin.net/tx/{0}",
+                "explorerAccountLink": "https://explorer.peercoin.net/address/{0}"
+            }
+        }
+    }
     "stakecube": {
         "name": "StakeCube",
         "canonicalName": "Stakecube",
