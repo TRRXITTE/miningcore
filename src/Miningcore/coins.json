@@ -2255,20 +2255,6 @@
         "explorerTxLink": "https://chainz.cryptoid.info/moon/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/moon/address.dws?{0}.htm"
     },
-    "nano": {
-        "name": "Nano",
-        "canonicalName": "Nano",
-        "symbol": "XNO",
-        "family": "nano",
-        "website": "https://nano.org/",
-        "market": "https://coinmarketcap.com/currencies/nano/",
-        "twitter": "https://twitter.com/nano",
-        "telegram": "https://t.me/nanocurrency",
-        "discord": "https://discord.gg/nanocurrency",
-        "explorerBlockLink": "https://nanolooker.com/block/$hash$",
-        "explorerTxLink": "https://nanolooker.com/block/{0}",
-        "explorerAccountLink": "https://nanolooker.com/account/{0}"
-    },
     "neoxa": {
         "name": "Neoxa",
         "canonicalName": "Neoxa",
