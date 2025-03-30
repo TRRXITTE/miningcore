@@ -37,8 +37,6 @@ public static class BitcoinUtils
 
     public static IDestination BCashAddressToDestination(string address, Network expectedNetwork)
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
         // Map the expectedNetwork's ChainName to the BCash library's ChainName
         ChainName chainName = expectedNetwork.ChainName.ToString().ToLower() switch
         {
@@ -64,37 +62,5 @@ public static class BitcoinUtils
 
         var pubKeyAddress = bcashNetwork.Parse<NBitcoin.Altcoins.BCash.BTrashPubKeyAddress>(address);
         return pubKeyAddress.ScriptPubKey.GetDestinationAddress(bcashNetwork);
-=======
-=======
->>>>>>> parent of b255b462 (bitcoincash: address)
-// Map the expectedNetwork's ChainName to the BCash library's ChainName
-         ChainName chainName = expectedNetwork.ChainName.ToString().ToLower() switch
-         {
-             "mainnet" or "main"     => ChainName.Mainnet,
-             "testnet4" or "test4"     => ChainName.Testnet,
-             "regtest" or "reg"        => ChainName.Regtest,
-             _ => throw new ArgumentException("Unknown network chain name", nameof(expectedNetwork))
-         };
- 
-         // Get the appropriate Bitcoin Cash network instance
-         var bcashNetwork = NBitcoin.Altcoins.BCash.Instance.GetNetwork(chainName);
- 
-         // If the address doesn't contain a colon, assume it's missing the CashAddr prefix.
-         if (!address.Contains(":"))
-         {
-             if (chainName == ChainName.Mainnet)
-                 address = "bitcoincash:" + address;
-             else if (chainName == ChainName.Testnet)
-                 address = "bchtest:" + address;
-             else if (chainName == ChainName.Regtest)
-                 address = "bchreg:" + address;
-         }
- 
-         var pubKeyAddress = bcashNetwork.Parse<NBitcoin.Altcoins.BCash.BTrashPubKeyAddress>(address);
-         return pubKeyAddress.ScriptPubKey.GetDestinationAddress(bcashNetwork);
-<<<<<<< HEAD
->>>>>>> parent of b255b462 (bitcoincash: address)
-=======
->>>>>>> parent of b255b462 (bitcoincash: address)
     }
 }
