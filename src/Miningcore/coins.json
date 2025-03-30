@@ -2297,4 +2297,714 @@
         "explorerBlockLink": "https://explorer.neoxa.net/block/$hash$",
         "explorerTxLink": "https://explorer.neoxa.net/tx/{0}",
         "explorerAccountLink": "https://explorer.neoxa.net/address/{0}"
+    },
+    "nimiq": {
+        "name": "Nimiq",
+        "canonicalName": "Nimiq",
+        "symbol": "NIM",
+        "family": "nimiq",
+        "website": "https://www.nimiq.com/",
+        "market": "https://coinmarketcap.com/currencies/nimiq/",
+        "twitter": "https://twitter.com/nimiq",
+        "telegram": "https://t.me/nimiq",
+        "discord": "https://discord.gg/nimiq",
+        "explorerBlockLink": "https://nimiq.watch/block/$height$",
+        "explorerTxLink": "https://nimiq.watch/tx/{0}",
+        "explorerAccountLink": "https://nimiq.watch/address/{0}"
+    },
+    "orbitcoin": {
+        "name": "Orbitcoin",
+        "canonicalName": "Orbitcoin",
+        "symbol": "ORB",
+        "family": "bitcoin",
+        "website": "http://orbitcoin.org/",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "neoscrypt",
+            "args": [
+                0
+            ]
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "neoscrypt",
+                    "args": [
+                        0
+                    ]
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://chainz.cryptoid.info/orb/block.dws?$height$.htm",
+        "explorerTxLink": "https://chainz.cryptoid.info/orb/tx.dws?{0}.htm",
+        "explorerAccountLink": "https://chainz.cryptoid.info/orb/address.dws?{0}.htm"
+    },
+    "peercoin": {
+        "name": "Peercoin",
+        "canonicalName": "Peercoin",
+        "symbol": "PPC",
+        "family": "bitcoin",
+        "website": "https://www.peercoin.net/",
+        "market": "https://coinmarketcap.com/currencies/peercoin/",
+        "twitter": "https://twitter.com/PeercoinPPC",
+        "telegram": "",
+        "discord": "https://discord.gg/peercoin",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "posBlockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 256,
+        "explorerBlockLink": "https://chainz.cryptoid.info/ppc/block.dws?$height$.htm",
+        "explorerTxLink": "https://chainz.cryptoid.info/ppc/tx.dws?{0}.htm",
+        "explorerAccountLink": "https://chainz.cryptoid.info/ppc/address.dws?{0}.htm"
+    },
+    "pivx": {
+        "name": "PIVX",
+        "canonicalName": "PIVX",
+        "symbol": "PIVX",
+        "family": "bitcoin",
+        "website": "https://pivx.org/",
+        "market": "https://coinmarketcap.com/currencies/pivx/",
+        "twitter": "https://twitter.com/_pivx",
+        "telegram": "https://t.me/PIVXCommunity",
+        "discord": "https://discord.gg/pivx",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "quark"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "quark"
+                }
+            ]
+        },
+        "hasMasterNodes": true,
+        "shareMultiplier": 4096,
+        "explorerBlockLink": "https://chainz.cryptoid.info/pivx/block.dws?$height$.htm",
+        "explorerTxLink": "https://chainz.cryptoid.info/pivx/tx.dws?{0}.htm",
+        "explorerAccountLink": "https://chainz.cryptoid.info/pivx/address.dws?{0}.htm"
+    },
+    "primecoin": {
+        "name": "Primecoin",
+        "canonicalName": "Primecoin",
+        "symbol": "XPM",
+        "family": "bitcoin",
+        "website": "http://primecoin.io/",
+        "market": "https://coinmarketcap.com/currencies/primecoin/",
+        "twitter": "https://twitter.com/primecoin",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "prime"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 256,
+        "explorerBlockLink": "https://chainz.cryptoid.info/xpm/block.dws?$height$.htm",
+        "explorerTxLink": "https://chainz.cryptoid.info/xpm/tx.dws?{0}.htm",
+        "explorerAccountLink": "https://chainz.cryptoid.info/xpm/address.dws?{0}.htm"
+    },
+    "qbic": {
+        "name": "Qbic",
+        "canonicalName": "Qbic",
+        "symbol": "QBIC",
+        "family": "bitcoin",
+        "website": "https://qbic.io/",
+        "market": "",
+        "twitter": "https://twitter.com/QbicPlatform",
+        "telegram": "https://t.me/qbicplatform",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "neoscrypt",
+            "args": [
+                0
+            ]
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "neoscrypt",
+                    "args": [
+                        0
+                    ]
+                }
+            ]
+        },
+        "hasMasterNodes": true,
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.qbic.io/block/$hash$",
+        "explorerTxLink": "https://explorer.qbic.io/tx/{0}",
+        "explorerAccountLink": "https://explorer.qbic.io/address/{0}"
+    },
+    "ravencoin": {
+        "name": "Ravencoin",
+        "canonicalName": "Ravencoin",
+        "symbol": "RVN",
+        "family": "bitcoin",
+        "website": "https://ravencoin.org/",
+        "market": "https://coinmarketcap.com/currencies/ravencoin/",
+        "twitter": "https://twitter.com/Ravencoin",
+        "telegram": "https://t.me/RavencoinDev",
+        "discord": "https://discord.gg/ravencoin",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "kawpow"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 256,
+        "explorerBlockLink": "https://ravencoin.network/block/$hash$",
+        "explorerTxLink": "https://ravencoin.network/tx/{0}",
+        "explorerAccountLink": "https://ravencoin.network/address/{0}"
+    },
+    "reddcoin": {
+        "name": "Reddcoin",
+        "canonicalName": "Reddcoin",
+        "symbol": "RDD",
+        "family": "bitcoin",
+        "website": "https://www.reddcoin.com/",
+        "market": "https://coinmarketcap.com/currencies/reddcoin/",
+        "twitter": "https://twitter.com/reddcoin",
+        "telegram": "https://t.me/reddcoin",
+        "discord": "https://discord.gg/reddcoin",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "scrypt",
+            "args": [
+                1024,
+                1
+            ]
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "posBlockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "scrypt",
+                    "args": [
+                        1024,
+                        1
+                    ]
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://live.reddcoin.com/block/$height$",
+        "explorerTxLink": "https://live.reddcoin.com/tx/{0}",
+        "explorerAccountLink": "https://live.reddcoin.com/address/{0}"
+    },
+    "safecoin": {
+        "name": "Safecoin",
+        "canonicalName": "Safecoin",
+        "symbol": "SAFE",
+        "family": "equihash",
+        "website": "https://safecoin.org/",
+        "market": "",
+        "twitter": "https://twitter.com/Safecoin",
+        "telegram": "",
+        "discord": "https://discord.gg/safecoin",
+        "networks": {
+            "main": {
+                "diff1": "0007ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+                "solutionSize": 100,
+                "solutionPreambleSize": 1,
+                "solver": {
+                    "hash": "equihash",
+                    "args": [
+                        144,
+                        5,
+                        "SafePoW"
+                    ]
+                },
+                "coinbaseTxNetwork": "main",
+                "payFoundersReward": false
+            },
+            "test": {
+                "diff1": "0007ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+                "solutionSize": 100,
+                "solutionPreambleSize": 1,
+                "solver": {
+                    "hash": "equihash",
+                    "args": [
+                        144,
+                        5,
+                        "SafePoW"
+                    ]
+                },
+                "coinbaseTxNetwork": "testnet",
+                "payFoundersReward": false
+            },
+            "regtest": {
+                "diff1": "0007ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+                "solutionSize": 100,
+                "solutionPreambleSize": 1,
+                "solver": {
+                    "hash": "equihash",
+                    "args": [
+                        144,
+                        5,
+                        "SafePoW"
+                    ]
+                },
+                "coinbaseTxNetwork": "regtest",
+                "payFoundersReward": false
+            }
+        },
+        "usesZCashAddressFormat": false,
+        "useBitcoinPayoutHandler": true,
+        "explorerBlockLink": "https://explorer.safecoin.org/block/$hash$",
+        "explorerTxLink": "https://explorer.safecoin.org/tx/{0}",
+        "explorerAccountLink": "https://explorer.safecoin.org/address/{0}"
+    },
+    "syscoin": {
+        "name": "Syscoin",
+        "canonicalName": "Syscoin",
+        "symbol": "SYS",
+        "family": "bitcoin",
+        "website": "https://syscoin.org/",
+        "market": "https://coinmarketcap.com/currencies/syscoin/",
+        "twitter": "https://twitter.com/syscoin",
+        "telegram": "https://t.me/Syscoin_Official",
+        "discord": "https://discord.gg/syscoin",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 256,
+        "explorerBlockLink": "https://chainz.cryptoid.info/sys/block.dws?$height$.htm",
+        "explorerTxLink": "https://chainz.cryptoid.info/sys/tx.dws?{0}.htm",
+        "explorerAccountLink": "https://chainz.cryptoid.info/sys/address.dws?{0}.htm"
+    },
+    "tethercoin": {
+        "name": "Tethercoin",
+        "canonicalName": "Tethercoin",
+        "symbol": "TTC",
+        "family": "bitcoin",
+        "website": "https://tethercoin.org/",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "x13"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "x13"
+                }
+            ]
+        },
+        "shareMultiplier": 4096,
+        "explorerBlockLink": "https://explorer.tethercoin.org/block/$hash$",
+        "explorerTxLink": "https://explorer.tethercoin.org/tx/{0}",
+        "explorerAccountLink": "https://explorer.tethercoin.org/address/{0}"
+    },
+    "unobtanium": {
+        "name": "Unobtanium",
+        "canonicalName": "Unobtanium",
+        "symbol": "UNO",
+        "family": "bitcoin",
+        "website": "http://unobtanium.uno/",
+        "market": "https://coinmarketcap.com/currencies/unobtanium/",
+        "twitter": "https://twitter.com/unobtanium_uno",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 256,
+        "explorerBlockLink": "https://chainz.cryptoid.info/uno/block.dws?$height$.htm",
+        "explorerTxLink": "https://chainz.cryptoid.info/uno/tx.dws?{0}.htm",
+        "explorerAccountLink": "https://chainz.cryptoid.info/uno/address.dws?{0}.htm"
+    },
+    "verge-lyra2rev2": {
+        "name": "Verge Lyra2REv2",
+        "canonicalName": "Verge",
+        "symbol": "XVG",
+        "family": "bitcoin",
+        "website": "https://vergecurrency.com/",
+        "market": "https://coinmarketcap.com/currencies/verge/",
+        "twitter": "https://twitter.com/vergecurrency",
+        "telegram": "https://t.me/VERGExvg",
+        "discord": "https://discord.gg/vergecurrency",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "lyra2rev2"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 256,
+        "blockTemplateRpcExtraParams": [
+            "lyra2rev2"
+        ],
+        "explorerBlockLink": "https://verge-blockchain.info/block/$height$",
+        "explorerTxLink": "https://verge-blockchain.info/tx/{0}",
+        "explorerAccountLink": "https://verge-blockchain.info/address/{0}"
+    },
+    "verge-scrypt": {
+        "name": "Verge Scrypt",
+        "canonicalName": "Verge",
+        "symbol": "XVG",
+        "family": "bitcoin",
+        "website": "https://vergecurrency.com/",
+        "market": "https://coinmarketcap.com/currencies/verge/",
+        "twitter": "https://twitter.com/vergecurrency",
+        "telegram": "https://t.me/VERGExvg",
+        "discord": "https://discord.gg/vergecurrency",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "scrypt",
+            "args": [
+                1024,
+                1
+            ]
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "blockTemplateRpcExtraParams": [
+            "scrypt"
+        ],
+        "explorerBlockLink": "https://verge-blockchain.info/block/$height$",
+        "explorerTxLink": "https://verge-blockchain.info/tx/{0}",
+        "explorerAccountLink": "https://verge-blockchain.info/address/{0}"
+    },
+    "vertcoin": {
+        "name": "Vertcoin",
+        "canonicalName": "Vertcoin",
+        "symbol": "VTC",
+        "family": "bitcoin",
+        "website": "https://vertcoin.org/",
+        "market": "https://coinmarketcap.com/currencies/vertcoin/",
+        "twitter": "https://twitter.com/Vertcoin",
+        "telegram": "https://t.me/vertcoin",
+        "discord": "https://discord.gg/vertcoin",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "verthash"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 256,
+        "explorerBlockLink": "https://chainz.cryptoid.info/vtc/block.dws?$height$.htm",
+        "explorerTxLink": "https://chainz.cryptoid.info/vtc/tx.dws?{0}.htm",
+        "explorerAccountLink": "https://chainz.cryptoid.info/vtc/address.dws?{0}.htm"
+    },
+    "viacoin": {
+        "name": "Viacoin",
+        "canonicalName": "Viacoin",
+        "symbol": "VIA",
+        "family": "bitcoin",
+        "website": "https://viacoin.org/",
+        "market": "https://coinmarketcap.com/currencies/viacoin/",
+        "twitter": "https://twitter.com/viacoin",
+        "telegram": "",
+        "discord": "https://discord.gg/viacoin",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "scrypt",
+            "args": [
+                1024,
+                1
+            ]
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://chainz.cryptoid.info/via/block.dws?$height$.htm",
+        "explorerTxLink": "https://chainz.cryptoid.info/via/tx.dws?{0}.htm",
+        "explorerAccountLink": "https://chainz.cryptoid.info/via/address.dws?{0}.htm"
+    },
+    "wownero": {
+        "name": "Wownero",
+        "canonicalName": "Wownero",
+        "symbol": "WOW",
+        "family": "monero",
+        "website": "https://wownero.org/",
+        "market": "https://coinmarketcap.com/currencies/wownero/",
+        "twitter": "https://twitter.com/wownero",
+        "telegram": "",
+        "discord": "https://discord.gg/wownero",
+        "explorerBlockLink": "https://explore.wownero.com/block/$height$",
+        "explorerTxLink": "https://explore.wownero.com/tx/{0}",
+        "explorerAccountLink": "https://explore.wownero.com/address/{0}"
+    },
+    "xaya": {
+        "name": "Xaya",
+        "canonicalName": "Xaya",
+        "symbol": "CHI",
+        "family": "bitcoin",
+        "website": "https://xaya.io/",
+        "market": "https://coinmarketcap.com/currencies/xaya/",
+        "twitter": "https://twitter.com/Xaya_Tech",
+        "telegram": "https://t.me/xaya_en",
+        "discord": "https://discord.gg/xaya",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "neoscrypt",
+            "args": [
+                0
+            ]
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "neoscrypt",
+                    "args": [
+                        0
+                    ]
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://explorer.xaya.io/block/$hash$",
+        "explorerTxLink": "https://explorer.xaya.io/tx/{0}",
+        "explorerAccountLink": "https://explorer.xaya.io/address/{0}"
+    },
+    "yacoin": {
+        "name": "Yacoin",
+        "canonicalName": "Yacoin",
+        "symbol": "YAC",
+        "family": "bitcoin",
+        "website": "http://yacoin.org/",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "scrypt",
+            "args": [
+                1024,
+                1
+            ]
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 65536,
+        "explorerBlockLink": "https://chainz.cryptoid.info/yac/block.dws?$height$.htm",
+        "explorerTxLink": "https://chainz.cryptoid.info/yac/tx.dws?{0}.htm",
+        "explorerAccountLink": "https://chainz.cryptoid.info/yac/address.dws?{0}.htm"
+    },
+    "zcash": {
+        "name": "Zcash",
+        "canonicalName": "Zcash",
+        "symbol": "ZEC",
+        "family": "equihash",
+        "website": "https://z.cash/",
+        "market": "https://coinmarketcap.com/currencies/zcash/",
+        "twitter": "https://twitter.com/electriccoinco",
+        "telegram": "https://t.me/zcash_community",
+        "discord": "https://discord.gg/zcash",
+        "networks": {
+            "main": {
+                "diff1": "0007ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+                "solutionSize": 1344,
+                "solutionPreambleSize": 3,
+                "solver": {
+                    "hash": "equihash",
+                    "args": [
+                        200,
+                        9,
+                        "ZcashPoW"
+                    ]
+                },
+                "coinbaseTxNetwork": "main",
+                "payFoundersReward": true
+            },
+            "test": {
+                "diff1": "0007ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+                "solutionSize": 1344,
+                "solutionPreambleSize": 3,
+                "solver": {
+                    "hash": "equihash",
+                    "args": [
+                        200,
+                        9,
+                        "ZcashPoW"
+                    ]
+                },
+                "coinbaseTxNetwork": "testnet",
+                "payFoundersReward": false
+            },
+            "regtest": {
+                "diff1": "0007ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+                "solutionSize": 1344,
+                "solutionPreambleSize": 3,
+                "solver": {
+                    "hash": "equihash",
+                    "args": [
+                        200,
+                        9,
+                        "ZcashPoW"
+                    ]
+                },
+                "coinbaseTxNetwork": "regtest",
+                "payFoundersReward": false
+            }
+        },
+        "usesZCashAddressFormat": true,
+        "useBitcoinPayoutHandler": false,
+        "explorerBlockLink": "https://explorer.zcha.in/blocks/$height$",
+        "explorerTxLink": "https://explorer.zcha.in/transactions/{0}",
+        "explorerAccountLink": "https://explorer.zcha.in/accounts/{0}"
+    },
+    "zcoin": {
+        "name": "Zcoin",
+        "canonicalName": "Zcoin",
+        "symbol": "XZC",
+        "family": "bitcoin",
+        "website": "https://zcoin.io/",
+        "market": "https://coinmarketcap.com/currencies/zcoin/",
+        "twitter": "https://twitter.com/zcoinofficial",
+        "telegram": "https://t.me/zcoinproject",
+        "discord": "https://discord.gg/zcoin",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "lyra2z"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "shareMultiplier": 256,
+        "explorerBlockLink": "https://chainz.cryptoid.info/xzc/block.dws?$height$.htm",
+        "explorerTxLink": "https://chainz.cryptoid.info/xzc/tx.dws?{0}.htm",
+        "explorerAccountLink": "https://chainz.cryptoid.info/xzc/address.dws?{0}.htm"
     }
+}
