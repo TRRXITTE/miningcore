@@ -4558,7 +4558,7 @@
     {
         "fractalbitcoin": {
             "name": "Fractal Bitcoin",
-            "canonicalName": "Fractal Bitcoin",
+            "canonicalName": "fractalbitcoin",
             "symbol": "FB",
             "family": "bitcoin",
             "website": "https://fractalbitcoin.io/",
@@ -4592,8 +4592,8 @@
     },
     {
         "bitcoin-classic": {
-            "name": "Bitcoin Classic",
-            "canonicalName": "Bitcoin Classic",
+            "name": "BitcoinXBT",
+            "canonicalName": "bitcoin-classic",
             "symbol": "XBT",
             "family": "bitcoin",
             "website": "https://xbt.satoshisolos.info/",
