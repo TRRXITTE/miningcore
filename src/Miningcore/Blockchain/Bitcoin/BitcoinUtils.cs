@@ -25,7 +25,6 @@ public static class BitcoinUtils
         return result;
     }
 
-    // Updated BCashAddressToDestination method
     public static IDestination BCashAddressToDestination(string address, Network expectedNetwork)
     {
         // Map the expectedNetwork's ChainName to BCash library's ChainName
@@ -40,16 +39,17 @@ public static class BitcoinUtils
         // Get the appropriate Bitcoin Cash network instance
         var bcashNetwork = NBitcoin.Altcoins.BCash.Instance.GetNetwork(chainName);
 
-        // If the address doesn't contain a colon, assume it's missing the CashAddr prefix and add it
+        // If the address doesn't contain a colon, prepend the appropriate prefix
         if (!address.Contains(":"))
         {
-            address = chainName switch
+            string prefix = chainName switch
             {
-                ChainName.Mainnet => "bitcoincash:" + address,
-                ChainName.Testnet => "bchtest:" + address,
-                ChainName.Regtest => "bchreg:" + address,
+                ChainName.Mainnet => "bitcoincash:",
+                ChainName.Testnet => "bchtest:",
+                ChainName.Regtest => "bchreg:",
                 _ => throw new ArgumentException("Unexpected chain name after mapping", nameof(chainName))
             };
+            address = prefix + address;
         }
 
         // Parse the address as a Bitcoin Cash address
