@@ -521,31 +521,31 @@ public abstract class BitcoinJobManagerBase<TJob> : JobManagerBase<TJob>
         SetupJobUpdates(ct);
     }
 
-    protected virtual IDestination AddressToDestination(string address, BitcoinAddressType? addressType)
+ protected virtual IDestination AddressToDestination(string address, BitcoinAddressType? addressType)
+{
+    if(string.IsNullOrEmpty(address))
+        throw new ArgumentNullException(nameof(address));
+
+    // Check if this is a DigiByte pool
+    if(poolConfig.Coin.ToLower().Contains("digibyte"))
     {
-        if(string.IsNullOrEmpty(address))
-            throw new ArgumentNullException(nameof(address));
-
-        // Check if this is a DigiByte pool
-        if(poolConfig.Coin.Type.ToLower().Contains("digibyte-sha256"))
-        {
-            return BitcoinUtils.DigiByteAddressToDestination(address, network);
-        }
-
-        // Handle other address types based on configuration
-        if(!addressType.HasValue)
-            return BitcoinUtils.AddressToDestination(address, network);
-
-        switch(addressType.Value)
-        {
-            case BitcoinAddressType.BechSegwit:
-                return BitcoinUtils.BechSegwitAddressToDestination(address, network);
-            case BitcoinAddressType.BCash:
-                return BitcoinUtils.BCashAddressToDestination(address, network);
-            default:
-                return BitcoinUtils.AddressToDestination(address, network);
-        }
+        return BitcoinUtils.DigiByteAddressToDestination(address, network);
     }
+
+    // Handle other address types based on configuration
+    if(!addressType.HasValue)
+        return BitcoinUtils.AddressToDestination(address, network);
+
+    switch(addressType.Value)
+    {
+        case BitcoinAddressType.BechSegwit:
+            return BitcoinUtils.BechSegwitAddressToDestination(address, network);
+        case BitcoinAddressType.BCash:
+            return BitcoinUtils.BCashAddressToDestination(address, network);
+        default:
+            return BitcoinUtils.AddressToDestination(address, network);
+    }
+}
 
     protected void SetupCrypto()
     {
