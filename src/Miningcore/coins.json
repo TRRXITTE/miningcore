@@ -735,5 +735,63 @@
     "explorerBlockLink": "https://explorer.bitcoinatom.io/block/$hash$",
     "explorerTxLink": "https://explorer.bitcoinatom.io/tx/{0}",
     "explorerAccountLink": "https://explorer.bitcoinatom.io/address/{0}"
+},
+"auroracoin-scrypt": {
+    "name": "Auroracoin Scrypt",
+    "canonicalName": "auroracoin",
+    "symbol": "AUR",
+    "family": "bitcoin",
+    "website": "http://auroracoin.is/",
+    "market": "https://coinmarketcap.com/currencies/auroracoin/",
+    "twitter": "https://x.com/OfficialAUR",
+    "telegram": "",
+    "discord": "https://discord.gg/Fhm4758",
+    "coinbaseHasher": {
+        "hash": "scrypt"
+    },
+    "headerHasher": {
+        "hash": "scrypt"
+    },
+    "blockHasher": {
+        "hash": "reverse",
+        "args": [
+            {
+                "hash": "scrypt"
+            }
+        ]
+    },
+    "coinbaseIgnoreAuxFlags": false,
+    "explorerBlockLink": "https://insight.auroracoin.is/block/$hash$",
+    "explorerTxLink": "https://insight.auroracoin.is/tx/{0}",
+    "explorerAccountLink": "https://insight.auroracoin.is/address/{0}"
+},
+"litecoin-cash": {
+    "name": "Litecoin Cash",
+    "canonicalName": "litecoin-cash",
+    "symbol": "LCC",
+    "family": "bitcoin",
+    "website": "https://litecoinca.sh/",
+    "market": "https://coinmarketcap.com/currencies/litecoin-cash/",
+    "twitter": "https://x.com/LitecoinCash",
+    "telegram": "https://t.me/litecoincashofficial",
+    "discord": "https://discord.gg/litecoincash",
+    "coinbaseHasher": {
+        "hash": "sha256d"
+    },
+    "headerHasher": {
+        "hash": "sha256d"
+    },
+    "blockHasher": {
+        "hash": "reverse",
+        "args": [
+            {
+                "hash": "sha256d"
+            }
+        ]
+    },
+    "coinbaseIgnoreAuxFlags": false,
+    "explorerBlockLink": "https://insight.litecoinca.sh/block/$hash$",
+    "explorerTxLink": "https://insight.litecoinca.sh/tx/{0}",
+    "explorerAccountLink": "https://insight.litecoinca.sh/address/{0}"
 }
 }
