@@ -41,13 +41,21 @@ public static class BitcoinUtils
         // If the address doesn't contain a colon, prepend the appropriate prefix
         if (!address.Contains(":"))
         {
-            string prefix = chainName switch
+            string prefix;
+            switch (chainName)
             {
-                ChainName.Mainnet => "bitcoincash:",
-                ChainName.Testnet => "bchtest:",
-                ChainName.Regtest => "bchreg:",
-                _ => throw new ArgumentException("Unexpected chain name after mapping", nameof(chainName))
-            };
+                case ChainName.Mainnet:
+                    prefix = "bitcoincash:";
+                    break;
+                case ChainName.Testnet:
+                    prefix = "bchtest:";
+                    break;
+                case ChainName.Regtest:
+                    prefix = "bchreg:";
+                    break;
+                default:
+                    throw new ArgumentException("Unexpected chain name after mapping", nameof(chainName));
+            }
             address = prefix + address;
         }
 
