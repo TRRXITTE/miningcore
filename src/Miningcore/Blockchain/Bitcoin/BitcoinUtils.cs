@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using System.Diagnostics;
 using NBitcoin;
 using NBitcoin.DataEncoders;
@@ -24,10 +25,39 @@ public static class BitcoinUtils
         var result = new KeyId(decoded);
 
         return result;
+=======
+public static IDestination BCashAddressToDestination(string address, Network expectedNetwork)
+{
+    // Map the expectedNetwork's ChainName to BCash ChainName and prefix
+    string chainNameStr = expectedNetwork.ChainName.ToString().ToLower();
+    ChainName chainName;
+    string prefix;
+
+    switch (chainNameStr)
+    {
+        case "mainnet":
+        case "main":
+            chainName = ChainName.Mainnet;
+            prefix = "bitcoincash:";
+            break;
+        case "testnet4":
+        case "test4":
+            chainName = ChainName.Testnet;
+            prefix = "bchtest:";
+            break;
+        case "regtest":
+        case "reg":
+            chainName = ChainName.Regtest;
+            prefix = "bchreg:";
+            break;
+        default:
+            throw new ArgumentException("Unknown network chain name", nameof(expectedNetwork));
+>>>>>>> parent of 83766f40 (Update BitcoinUtils.cs)
     }
 
     public static IDestination BechSegwitAddressToDestination(string address, Network expectedNetwork)
     {
+<<<<<<< HEAD
         var encoder = expectedNetwork.GetBech32Encoder(Bech32Type.WITNESS_PUBKEY_ADDRESS, true)
             ?? throw new ArgumentException("Bech32 encoder not available for the specified network", nameof(expectedNetwork));
         var decoded = encoder.Decode(address, out var witVersion);
@@ -101,4 +131,11 @@ public static class BitcoinUtils
 
         return result;
     }
+=======
+        address = prefix + address;
+    }
+
+    var pubKeyAddress = bcashNetwork.Parse<NBitcoin.Altcoins.BCash.BTrashPubKeyAddress>(address);
+    return pubKeyAddress.ScriptPubKey.GetDestinationAddress(bcashNetwork);
+>>>>>>> parent of 83766f40 (Update BitcoinUtils.cs)
 }
