@@ -2770,6 +2770,32 @@
         "explorerTxLink": "https://chainz.cryptoid.info/via/tx.dws?{0}.htm",
         "explorerAccountLink": "https://chainz.cryptoid.info/via/address.dws?{0}.htm"
     },
+
+    "monero": {
+        "name": "Monero",
+        "canonicalName": "Monero",
+        "symbol": "XMR",
+        "family": "cryptonote",
+        "website": "",
+        "market": "",
+        "twitter": "",
+        "telegram": "",
+        "discord": "",
+        "hash": "randomx",
+        "hashVariant": 0,
+        "smallestUnit": 1000000000000,
+        "addressPrefix": 18,
+        "addressPrefixStagenet": 24,
+        "addressPrefixTestnet": 53,
+        "addressPrefixIntegrated": 19,
+        "addressPrefixIntegratedStagenet": 25,
+        "addressPrefixIntegratedTestnet": 54,
+        "subAddressPrefix": 42,
+        "subAddressPrefixTestnet": 63,
+        "subAddressPrefixStagenet": 36,
+        "explorerBlockLink": "https://www.exploremonero.com/block/$height$",
+        "explorerTxLink": "https://www.exploremonero.com/transaction/{0}"
+    ],    
     "wownero": {
         "name": "Wownero",
         "canonicalName": "Wownero",
