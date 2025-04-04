@@ -822,5 +822,34 @@
         "explorerBlockLink": "https://btc.trrxitte.com/block/$hash$",
         "explorerTxLink": "https://btc.trrxitte.com/tx/{0}",
         "explorerAccountLink": "https://btc.trrxitte.com/address/{0}"
+    },
+    "trrxitte": {
+        "name": "TRRXITTE",
+        "canonicalName": "trrxitte",
+        "symbol": "TRRXITTE",
+        "family": "bitcoin",
+        "website": "https://btc.trrxitte.com",
+        "market": "https://mecacex.com/market/TRRXITTEUSDT",
+        "twitter": "https://x.com/trrxitte",
+        "telegram": "",
+        "discord": "",
+        "coinbaseHasher": {
+            "hash": "sha256d"
+        },
+        "headerHasher": {
+            "hash": "sha256d"
+        },
+        "blockHasher": {
+            "hash": "reverse",
+            "args": [
+                {
+                    "hash": "sha256d"
+                }
+            ]
+        },
+        "coinbaseIgnoreAuxFlags": true,
+        "explorerBlockLink": "https://btc-explorer.trrxitte.com/block/$hash$",
+        "explorerTxLink": "https://btc-explorer.trrxitte.com/tx/{0}",
+        "explorerAccountLink": "https://btc-explorer.trrxitte.com/address/{0}"
     }
 }
