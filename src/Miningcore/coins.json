@@ -794,33 +794,46 @@
     "explorerTxLink": "https://insight.litecoinca.sh/tx/{0}",
     "explorerAccountLink": "https://insight.litecoinca.sh/address/{0}"
 },
-    "trrxitte-bitcoin": {
+    "TRRXITTE": {
     "name": "TRRXITTE Bitcoin",
-    "canonicalName": "trrxitte-bitcoin",
+    "canonicalName": "TRRXITTE",
     "symbol": "TRRXITTE",
     "family": "bitcoin",
     "website": "https://btc.trrxitte.com/",
-    "market": "",
-    "twitter": "",
-    "telegram": "",
-    "discord": "",
     "coinbaseHasher": {
-        "hash": "sha256d"
+      "hash": "sha256d"
     },
     "headerHasher": {
-        "hash": "sha256d"
+      "hash": "sha256d"
     },
     "blockHasher": {
-        "hash": "reverse",
-        "args": [
-            {
-                "hash": "sha256d"
-            }
-        ]
+      "hash": "reverse",
+      "args": [
+        {
+          "hash": "sha256d"
+        }
+      ]
     },
-    "coinbaseIgnoreAuxFlags": true,
-    "explorerBlockLink": "",
-    "explorerTxLink": "",
-    "explorerAccountLink": ""
-}
+    "address-versions": {
+      "pubkeyhash": [111],      // testnet P2PKH = 0x6F
+      "scripthash": [196]       // testnet P2SH = 0xC4
+    },
+    "segwit": {
+      "enabled": true,
+      "hrp": "tb"
+    },
+    "taproot": {
+      "enabled": true,
+      "address-type": "bech32m"
+    },
+    "rpc-daemon": {
+      "port": 45523,
+      "user": "root",
+      "password": "45678876543456787654"
+    },
+    "coinbase-reward": {
+      "type": "static",
+      "value": 100
+    }
+  }
 }
