@@ -73,116 +73,114 @@ public class BitcoinPayoutHandler : PayoutHandlerBase,
         return Task.CompletedTask;
     }
 
-    public virtual async Task<Block[]> ClassifyBlocksAsync(IMiningPool pool, Block[] blocks, CancellationToken ct)
+public virtual async Task<Block[]> ClassifyBlocksAsync(IMiningPool pool, Block[] blocks, CancellationToken ct)
+{
+    Contract.RequiresNonNull(poolConfig);
+    Contract.RequiresNonNull(blocks);
+
+    var coin = poolConfig.Template.As<CoinTemplate>();
+    if (coin == null)
     {
-        Contract.RequiresNonNull(poolConfig);
-        Contract.RequiresNonNull(blocks);
+        logger.Error(() => $"[{LogCategory}] Unable to classify blocks: Coin template is null for pool {poolConfig.Id}");
+        return blocks; // Return blocks unchanged to avoid further processing
+    }
 
-        var coin = poolConfig.Template.As<CoinTemplate>();
-        var pageSize = 100;
-        var pageCount = (int) Math.Ceiling(blocks.Length / (double) pageSize);
-        var result = new List<Block>();
-        int minConfirmations;
+    var pageSize = 100;
+    var pageCount = (int) Math.Ceiling(blocks.Length / (double) pageSize);
+    var result = new List<Block>();
+    int minConfirmations;
 
-        if(coin is BitcoinTemplate bitcoinTemplate)
-            minConfirmations = extraPoolEndpointConfig?.MinimumConfirmations ?? bitcoinTemplate.CoinbaseMinConfimations ?? BitcoinConstants.CoinbaseMinConfimations;
-        else
-            minConfirmations = extraPoolEndpointConfig?.MinimumConfirmations ?? BitcoinConstants.CoinbaseMinConfimations;
+    if (coin is BitcoinTemplate bitcoinTemplate)
+        minConfirmations = extraPoolEndpointConfig?.MinimumConfirmations ?? bitcoinTemplate.CoinbaseMinConfimations ?? BitcoinConstants.CoinbaseMinConfimations;
+    else
+        minConfirmations = extraPoolEndpointConfig?.MinimumConfirmations ?? BitcoinConstants.CoinbaseMinConfimations;
 
-        for(var i = 0; i < pageCount; i++)
+    for (var i = 0; i < pageCount; i++)
+    {
+        // get a page full of blocks
+        var page = blocks
+            .Skip(i * pageSize)
+            .Take(pageSize)
+            .ToArray();
+
+        // build command batch (block.TransactionConfirmationData is the hash of the blocks coinbase transaction)
+        var batch = page.Select(block => new RpcRequest(BitcoinCommands.GetTransaction,
+            new[] { block.TransactionConfirmationData })).ToArray();
+
+        // execute batch
+        var results = await rpcClient.ExecuteBatchAsync(logger, ct, batch);
+
+        for (var j = 0; j < results.Length; j++)
         {
-            // get a page full of blocks
-            var page = blocks
-                .Skip(i * pageSize)
-                .Take(pageSize)
-                .ToArray();
+            var cmdResult = results[j];
+            var transactionInfo = cmdResult.Response?.ToObject<Transaction>();
+            var block = page[j];
 
-            // build command batch (block.TransactionConfirmationData is the hash of the blocks coinbase transaction)
-            var batch = page.Select(block => new RpcRequest(BitcoinCommands.GetTransaction,
-                new[] { block.TransactionConfirmationData })).ToArray();
-
-            // execute batch
-            var results = await rpcClient.ExecuteBatchAsync(logger, ct, batch);
-
-            for(var j = 0; j < results.Length; j++)
+            // check error
+            if (cmdResult.Error != null)
             {
-                var cmdResult = results[j];
-
-                var transactionInfo = cmdResult.Response?.ToObject<Transaction>();
-                var block = page[j];
-
-                // check error
-                if(cmdResult.Error != null)
-                {
-                    // Code -5 interpreted as "orphaned"
-                    if(cmdResult.Error.Code == -5)
-                    {
-                        block.Status = BlockStatus.Orphaned;
-                        block.Reward = 0;
-                        result.Add(block);
-
-                        logger.Info(() => $"[{LogCategory}] Block {block.BlockHeight} classified as orphaned due to daemon error {cmdResult.Error.Code}");
-
-                        messageBus.NotifyBlockUnlocked(poolConfig.Id, block, coin);
-                    }
-
-                    else
-                        logger.Warn(() => $"[{LogCategory}] Daemon reports error '{cmdResult.Error.Message}' (Code {cmdResult.Error.Code}) for transaction {page[j].TransactionConfirmationData}");
-                }
-
-                // missing transaction details are interpreted as "orphaned"
-                else if(transactionInfo?.Details == null || transactionInfo.Details.Length == 0)
+                // Code -5 interpreted as "orphaned"
+                if (cmdResult.Error.Code == -5)
                 {
                     block.Status = BlockStatus.Orphaned;
                     block.Reward = 0;
                     result.Add(block);
 
-                    logger.Info(() => $"[{LogCategory}] Block {block.BlockHeight} classified as orphaned due to missing tx details");
-
+                    logger.Info(() => $"[{LogCategory}] Block {block.BlockHeight} classified as orphaned due to daemon error {cmdResult.Error.Code}");
                     messageBus.NotifyBlockUnlocked(poolConfig.Id, block, coin);
                 }
-
                 else
+                    logger.Warn(() => $"[{LogCategory}] Daemon reports error '{cmdResult.Error.Message}' (Code {cmdResult.Error.Code}) for transaction {page[j].TransactionConfirmationData}");
+            }
+            // missing transaction details are interpreted as "orphaned"
+            else if (transactionInfo?.Details == null || transactionInfo.Details.Length == 0)
+            {
+                block.Status = BlockStatus.Orphaned;
+                block.Reward = 0;
+                result.Add(block);
+
+                logger.Info(() => $"[{LogCategory}] Block {block.BlockHeight} classified as orphaned due to missing... due to missing tx details");
+                messageBus.NotifyBlockUnlocked(poolConfig.Id, block, coin);
+            }
+            else
+            {
+                switch (transactionInfo.Details[0].Category)
                 {
-                    switch(transactionInfo.Details[0].Category)
-                    {
-                        case "immature":
-                            // update progress
-                            block.ConfirmationProgress = Math.Min(1.0d, (double) transactionInfo.Confirmations / minConfirmations);
-                            block.Reward = transactionInfo.Amount;  // update actual block-reward from coinbase-tx
-                            result.Add(block);
+                    case "immature":
+                        // update progress
+                        block.ConfirmationProgress = Math.Min(1.0d, (double) transactionInfo.Confirmations / minConfirmations);
+                        block.Reward = transactionInfo.Amount;  // update actual block-reward from coinbase-tx
+                        result.Add(block);
 
-                            messageBus.NotifyBlockConfirmationProgress(poolConfig.Id, block, coin);
-                            break;
+                        messageBus.NotifyBlockConfirmationProgress(poolConfig.Id, block, coin);
+                        break;
 
-                        case "generate":
-                            // matured and spendable coinbase transaction
-                            block.Status = BlockStatus.Confirmed;
-                            block.ConfirmationProgress = 1;
-                            block.Reward = transactionInfo.Amount;  // update actual block-reward from coinbase-tx
-                            result.Add(block);
+                    case "generate":
+                        // matured and spendable coinbase transaction
+                        block.Status = BlockStatus.Confirmed;
+                        block.ConfirmationProgress = 1;
+                        block.Reward = transactionInfo.Amount;  // update actual block-reward from coinbase-tx
+                        result.Add(block);
 
-                            logger.Info(() => $"[{LogCategory}] Unlocked block {block.BlockHeight} worth {FormatAmount(block.Reward)}");
+                        logger.Info(() => $"[{LogCategory}] Unlocked block {block.BlockHeight} worth {FormatAmount(block.Reward)}");
+                        messageBus.NotifyBlockUnlocked(poolConfig.Id, block, coin);
+                        break;
 
-                            messageBus.NotifyBlockUnlocked(poolConfig.Id, block, coin);
-                            break;
+                    default:
+                        logger.Info(() => $"[{LogCategory}] Block {block.BlockHeight} classified as orphaned. Category: {transactionInfo.Details[0].Category}");
+                        block.Status = BlockStatus.Orphaned;
+                        block.Reward = 0;
+                        result.Add(block);
 
-                        default:
-                            logger.Info(() => $"[{LogCategory}] Block {block.BlockHeight} classified as orphaned. Category: {transactionInfo.Details[0].Category}");
-
-                            block.Status = BlockStatus.Orphaned;
-                            block.Reward = 0;
-                            result.Add(block);
-
-                            messageBus.NotifyBlockUnlocked(poolConfig.Id, block, coin);
-                            break;
-                    }
+                        messageBus.NotifyBlockUnlocked(poolConfig.Id, block, coin);
+                        break;
                 }
             }
         }
-
-        return result.ToArray();
     }
+
+    return result.ToArray();
+}
 
     public virtual async Task PayoutAsync(IMiningPool pool, Balance[] balances, CancellationToken ct)
     {
