@@ -826,14 +826,13 @@
       "enabled": true,
       "address-type": "bech32m"
     },
-    "rpc-daemon": {
-      "port": 45523,
-      "user": "root",
-      "password": "45678876543456787654"
-    },
     "coinbase-reward": {
       "type": "static",
       "value": 100
-    }
+    },
+    "coinbaseIgnoreAuxFlags": false,
+    "explorerBlockLink": "https://mempool.trrxitte.com/block/$hash$",
+    "explorerTxLink": "https://mempool.trrxitte.com/tx/{0}",
+    "explorerAccountLink": "https://mempool.trrxitte.com/address/{0}"
   }
 }
